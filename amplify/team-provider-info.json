@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-securenotesapp-dev-10fce-authRole",
+      "UnauthRoleArn": "arn:aws:iam::047719636913:role/amplify-securenotesapp-dev-10fce-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::047719636913:role/amplify-securenotesapp-dev-10fce-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-securenotesapp-dev-10fce-deployment",
+      "UnauthRoleName": "amplify-securenotesapp-dev-10fce-unauthRole",
+      "StackName": "amplify-securenotesapp-dev-10fce",
+      "StackId": "arn:aws:cloudformation:us-east-1:047719636913:stack/amplify-securenotesapp-dev-10fce/ac4352d0-b5eb-11ef-89ea-0e27ddd67c27",
+      "AmplifyAppId": "d2fa1zzd5glcmc"
+    },
+    "categories": {
+      "auth": {
+        "securenotesappb9edec28": {}
+      },
+      "api": {
+        "securenotesapp": {}
+      }
+    }
+  }
+}
