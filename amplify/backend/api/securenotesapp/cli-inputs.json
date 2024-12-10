@@ -4,8 +4,17 @@
     "apiName": "securenotesapp",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authsecurenotesappb9edec28"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 30,
+        "apiKeyExpirationDate": "2025-01-09T01:28:19.096Z",
+        "keyDescription": "Api key for admin access for this apis"
+      }
+    ]
   }
 }

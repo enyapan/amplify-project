@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Amplify } from "aws-amplify";
-import { API, graphqlOperation } from "@aws-amplify/api-graphql";
+import { generateClient } from 'aws-amplify/api';
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { listNotes } from "./graphql/queries";
 import { createNote, updateNote, deleteNote } from "./graphql/mutations";
@@ -8,6 +8,7 @@ import awsExports from "./aws-exports";
 import "./App.css";
 
 Amplify.configure(awsExports);
+const API = generateClient();
 
 
 function App({ signOut, user }) {
@@ -22,7 +23,7 @@ function App({ signOut, user }) {
 
   const fetchNotes = async () => {
     try {
-      const result = await API.graphql(graphqlOperation(listNotes));
+      const result = await API.graphql({query: listNotes});
       setNotes(result.data.listNotes.items);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -33,7 +34,7 @@ function App({ signOut, user }) {
     if (!noteContent.trim()) return;
     try {
       const result = await API.graphql(
-        graphqlOperation(createNote, { input: { content: noteContent } })
+        {query:createNote, variables:{ input: { content: noteContent } }}
       );
       setNotes([...notes, result.data.createNote]);
       setNoteContent("");
@@ -52,9 +53,9 @@ function App({ signOut, user }) {
     if (!noteContent.trim()) return;
     try {
       const result = await API.graphql(
-        graphqlOperation(updateNote, {
+        {query:updateNote, variables:{
           input: { id: noteIdToEdit, content: noteContent },
-        })
+        }}
       );
       const updatedNotes = notes.map((note) =>
         note.id === noteIdToEdit ? result.data.updateNote : note
@@ -70,7 +71,7 @@ function App({ signOut, user }) {
 
   const handleDeleteNote = async (id) => {
     try {
-      await API.graphql(graphqlOperation(deleteNote, { input: { id } }));
+      await API.graphql({query:deleteNote, variables:{ input: { id } }});
       setNotes(notes.filter((note) => note.id !== id));
     } catch (error) {
       console.error("Error deleting note:", error);
