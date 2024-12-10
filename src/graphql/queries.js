@@ -6,6 +6,8 @@ export const getNote = /* GraphQL */ `
     getNote(id: $id) {
       id
       content
+      header
+      tags
       createdAt
       updatedAt
       owner
@@ -23,6 +25,8 @@ export const listNotes = /* GraphQL */ `
       items {
         id
         content
+        header
+        tags
         createdAt
         updatedAt
         owner

@@ -10,6 +10,8 @@ export const onCreateNote = /* GraphQL */ `
       id
       content
       createdAt
+      header
+      tags
       updatedAt
       owner
       __typename
@@ -24,6 +26,8 @@ export const onUpdateNote = /* GraphQL */ `
     onUpdateNote(filter: $filter, owner: $owner) {
       id
       content
+      header
+      tags
       createdAt
       updatedAt
       owner
@@ -39,6 +43,8 @@ export const onDeleteNote = /* GraphQL */ `
     onDeleteNote(filter: $filter, owner: $owner) {
       id
       content
+      header
+      tags
       createdAt
       updatedAt
       owner
